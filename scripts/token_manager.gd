@@ -11,12 +11,12 @@ const TOKEN_MODELS: Dictionary = {
 }
 
 const TOKEN_SCALES: Dictionary = {
-    "locomotora":  0.25, "noctambulo":  0.22,
-    "hagrid_moto": 0.20, "saeta":       0.18,
-    "hipogrifo":   0.28, "thestral":    0.28,
+    "locomotora":  0.90, "noctambulo":  0.80,
+    "hagrid_moto": 0.72, "saeta":       0.68,
+    "hipogrifo":   0.98, "thestral":    0.98,
 }
 
-const TOKEN_HEIGHT: float = 0.12   # Altura sobre la casilla
+const TOKEN_HEIGHT: float = 0.16   # Altura sobre la casilla
 const SLOT_OFFSETS: Array = [
     Vector2(0, 0),    Vector2(0.22, 0),
     Vector2(-0.22, 0), Vector2(0, 0.22),
