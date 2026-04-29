@@ -17,11 +17,8 @@ const TOKEN_SCALES: Dictionary = {
 }
 
 const TOKEN_HEIGHT: float = 0.16   # Altura sobre la casilla
-const SLOT_OFFSETS: Array = [
-    Vector2(0, 0),    Vector2(0.22, 0),
-    Vector2(-0.22, 0), Vector2(0, 0.22),
-    Vector2(0.22, 0.22), Vector2(-0.22, 0.22)
-]
+const SLOT_GRID_SPACING_X: float = 0.18
+const SLOT_GRID_SPACING_Z: float = 0.18
 
 var _gold_mat:    StandardMaterial3D = null
 var token_nodes:  Array = []   # Contenedores externos (posición real)
@@ -42,7 +39,7 @@ func _build_gold_material() -> void:
     _gold_mat.emission            = Color("#FFD700") * 0.8
     _gold_mat.clearcoat           = 1.0
     _gold_mat.clearcoat_roughness = 0.08
-    _gold_mat.shading_mode        = BaseMaterial3D.SHADING_MODE_UNSHADED
+    _gold_mat.shading_mode        = BaseMaterial3D.SHADING_MODE_PER_PIXEL
 
 # ── Crear tokens ──────────────────────────────────────────────────
 func create_tokens(players: Array) -> void:
@@ -97,9 +94,25 @@ func _load_model(token_id: String) -> Node3D:
 
 func _apply_gold_recursive(node: Node) -> void:
     if node is MeshInstance3D:
-        node.material_override = _gold_mat.duplicate()
-        for i in range(node.get_surface_override_material_count()):
-            node.set_surface_override_material(i, _gold_mat.duplicate())
+        node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+        node.material_override = null
+        var mesh_inst := node as MeshInstance3D
+        var mesh := mesh_inst.mesh
+        if mesh:
+            for s in range(mesh.get_surface_count()):
+                var base_mat = mesh.surface_get_material(s)
+                var out_mat: StandardMaterial3D
+                if base_mat is StandardMaterial3D:
+                    out_mat = (base_mat as StandardMaterial3D).duplicate()
+                else:
+                    out_mat = _gold_mat.duplicate()
+                out_mat.shading_mode = BaseMaterial3D.SHADING_MODE_PER_PIXEL
+                out_mat.albedo_color = out_mat.albedo_color.lerp(Color("#D4A843"), 0.65)
+                out_mat.metallic = max(out_mat.metallic, 0.35)
+                out_mat.roughness = min(out_mat.roughness, 0.45)
+                out_mat.emission_enabled = true
+                out_mat.emission = Color("#D4A843") * 0.32
+                mesh_inst.set_surface_override_material(s, out_mat)
     for child in node.get_children():
         _apply_gold_recursive(child)
 
@@ -168,6 +181,21 @@ func _get_base_pos(tile_id: int, slot: int, total: int) -> Vector3:
     if board_scene == null or not board_scene.has_method("get_tile_center_3d"):
         return Vector3(0, TOKEN_HEIGHT, 0)
     var center = board_scene.get_tile_center_3d(tile_id)
-    var off    = SLOT_OFFSETS[slot] if slot < SLOT_OFFSETS.size() else Vector2.ZERO
+    var off    = _get_grid_slot_offset(slot, total)
     # center.y ya incluye TILE_THICK/2, sumamos TOKEN_HEIGHT encima
     return Vector3(center.x + off.x, center.y + TOKEN_HEIGHT, center.z + off.y)
+
+func _get_grid_slot_offset(slot: int, total: int) -> Vector2:
+    if total <= 1:
+        return Vector2.ZERO
+    var cols = min(3, max(1, total))
+    var rows = int(ceil(float(total) / float(cols)))
+    var row = int(slot / cols)
+    var col = int(slot % cols)
+
+    # centrar grilla alrededor de (0,0)
+    var width = float(cols - 1) * SLOT_GRID_SPACING_X
+    var depth = float(rows - 1) * SLOT_GRID_SPACING_Z
+    var x = -width * 0.5 + float(col) * SLOT_GRID_SPACING_X
+    var z = -depth * 0.5 + float(row) * SLOT_GRID_SPACING_Z
+    return Vector2(x, z)

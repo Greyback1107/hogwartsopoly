@@ -7,6 +7,7 @@ const ROT_SPEED:    float  = 0.0
 const BOB_AMP:      float  = 0.0
 const BOB_SPEED:    float  = 0.0
 const CASTLE_TINT:  Color  = Color("#D8D8D8")
+const CASTLE_CENTER_OFFSET: Vector3 = Vector3(-0.9, 0.0, 0.0)
 
 var _time: float = 0.0
 var _base_y: float = 0.0
@@ -25,14 +26,16 @@ func _ensure_castle_present() -> void:
     var existing = _find_existing_castle_model()
     if existing != null:
         existing.scale = Vector3.ONE * CASTLE_SCALE
+        _center_and_ground_model(existing)
         existing.position = Vector3.ZERO
+
         _apply_castle_tint(existing)
         return
 
     if ResourceLoader.exists(CASTLE_PATH):
         var inst = load(CASTLE_PATH).instantiate()
         inst.scale = Vector3.ONE * CASTLE_SCALE
-        inst.position = Vector3.ZERO
+        _center_and_ground_model(inst)
         _apply_castle_tint(inst)
         # Preservar materiales originales del GLB — NO aplicar override
         add_child(inst)
@@ -45,8 +48,42 @@ func _find_existing_castle_model() -> Node3D:
             return child
     return null
 
+func _center_and_ground_model(model_root: Node3D) -> void:
+    var aabb := _compute_aabb_recursive(model_root)
+    if aabb.size == Vector3.ZERO:
+        model_root.position = Vector3.ZERO
+        return
+    var center_xz = Vector3(aabb.position.x + aabb.size.x * 0.5, 0.0, aabb.position.z + aabb.size.z * 0.5)
+    var base_y = aabb.position.y
+    model_root.position = Vector3(-center_xz.x, -base_y, -center_xz.z) + CASTLE_CENTER_OFFSET
+
+func _compute_aabb_recursive(root: Node3D) -> AABB:
+    var first := true
+    var out := AABB()
+    var stack: Array = [[root, Transform3D.IDENTITY]]
+    while not stack.is_empty():
+        var item = stack.pop_back()
+        var n: Node3D = item[0]
+        var parent_xform: Transform3D = item[1]
+        var local_xform = parent_xform * n.transform
+        if n is MeshInstance3D:
+            var mi := n as MeshInstance3D
+            if mi.mesh:
+                var local_aabb = mi.mesh.get_aabb()
+                var global_aabb = local_xform * local_aabb
+                if first:
+                    out = global_aabb
+                    first = false
+                else:
+                    out = out.merge(global_aabb)
+        for c in n.get_children():
+            if c is Node3D:
+                stack.append([c, local_xform])
+    return out
+
 func _apply_castle_tint(node: Node) -> void:
     if node is MeshInstance3D:
+        node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
         var mat = StandardMaterial3D.new()
         mat.albedo_color = CASTLE_TINT
         mat.metallic = 0.15
