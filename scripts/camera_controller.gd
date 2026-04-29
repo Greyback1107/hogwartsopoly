@@ -25,6 +25,9 @@ var _target_angle:   float   = 0.0
 var _target_focus:   Vector3 = Vector3.ZERO
 var _current_focus:  Vector3 = Vector3.ZERO
 var _orbiting:       bool    = false
+var _dragging_pan:   bool    = false
+var _last_mouse_pos: Vector2 = Vector2.ZERO
+var _pan_sensitivity: float  = 0.012
 
 # ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
@@ -92,6 +95,22 @@ func _input(event: InputEvent) -> void:
 			camera.size = clamp(camera.size - 0.8, 5.0, 20.0)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			camera.size = clamp(camera.size + 0.8, 5.0, 20.0)
+		elif event.button_index == MOUSE_BUTTON_MIDDLE or event.button_index == MOUSE_BUTTON_RIGHT:
+			_dragging_pan = event.pressed
+			_last_mouse_pos = event.position
+	elif event is InputEventMouseMotion and _dragging_pan:
+		var delta = event.position - _last_mouse_pos
+		_last_mouse_pos = event.position
+		_pan_camera(delta)
+
+func _pan_camera(mouse_delta: Vector2) -> void:
+	# Paneo en el plano XZ relativo al ángulo actual de cámara
+	var right = Vector3.RIGHT.rotated(Vector3.UP, deg_to_rad(_current_angle))
+	var forward = Vector3.FORWARD.rotated(Vector3.UP, deg_to_rad(_current_angle))
+	var factor = camera.size * _pan_sensitivity
+	_current_focus -= right * mouse_delta.x * factor
+	_current_focus += forward * mouse_delta.y * factor
+	_update_camera_transform()
 
 # ── Vista general (muestra todo el tablero) ───────────────────────
 func show_full_board(animate: bool = true) -> void:

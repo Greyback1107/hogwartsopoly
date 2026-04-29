@@ -13,6 +13,8 @@ const NORMAL_H:    float = 1.22
 const TILE_THICK:  float = 0.06
 const BOARD_Y:     float = 0.0
 const GAP:         float = 0.01
+const TILE_BORDER_THICK: float = 0.012
+const TILE_BORDER_HEIGHT: float = 0.004
 
 # Tipos sin franja de color
 const NO_STRIPE: Array = [
@@ -158,6 +160,34 @@ func _create_tile(tile_data: Dictionary, tid: int) -> void:
     bmat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
     base.material_override = bmat
     container.add_child(base)
+    _add_tile_gold_border(container, size2d)
+
+func _add_tile_gold_border(container: Node3D, size2d: Vector2) -> void:
+    var half_w = (size2d.x - GAP) * 0.5
+    var half_h = (size2d.y - GAP) * 0.5
+    var y = TILE_THICK * 0.5 + TILE_BORDER_HEIGHT * 0.5 + 0.0005
+
+    var mat = StandardMaterial3D.new()
+    mat.albedo_color = Color("#C9A84C")
+    mat.emission_enabled = true
+    mat.emission = Color("#C9A84C") * 0.45
+    mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+
+    var segments = [
+        [Vector3(0, y, -half_h + TILE_BORDER_THICK * 0.5), Vector3(size2d.x - GAP, TILE_BORDER_HEIGHT, TILE_BORDER_THICK)],
+        [Vector3(0, y,  half_h - TILE_BORDER_THICK * 0.5), Vector3(size2d.x - GAP, TILE_BORDER_HEIGHT, TILE_BORDER_THICK)],
+        [Vector3(-half_w + TILE_BORDER_THICK * 0.5, y, 0), Vector3(TILE_BORDER_THICK, TILE_BORDER_HEIGHT, size2d.y - GAP)],
+        [Vector3( half_w - TILE_BORDER_THICK * 0.5, y, 0), Vector3(TILE_BORDER_THICK, TILE_BORDER_HEIGHT, size2d.y - GAP)],
+    ]
+
+    for seg in segments:
+        var mi = MeshInstance3D.new()
+        var bm = BoxMesh.new()
+        bm.size = seg[1]
+        mi.mesh = bm
+        mi.position = seg[0]
+        mi.material_override = mat
+        container.add_child(mi)
 
 func _add_tile_text(container: Node3D, tile_data: Dictionary, size2d: Vector2, has_stripe: bool) -> void:
     var font      = ThemeDB.fallback_font
@@ -214,7 +244,8 @@ func _add_tile_text(container: Node3D, tile_data: Dictionary, size2d: Vector2, h
 func _setup_castle() -> void:
     if castle_root == null:
         return
-    castle_root.position = Vector3(0.0, TILE_THICK + 0.08, 0.0)
+    # Apoyado sobre la base del tablero (sin flotar)
+    castle_root.position = Vector3(0.0, TILE_THICK * 0.5 + 0.002, 0.0)
 
 # ── Registro de jugadores ─────────────────────────────────────────
 func _register_players() -> void:
