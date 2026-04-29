@@ -7,6 +7,7 @@ var _board_scene:   Node3D = null
 var _token_manager: Node3D = null
 var _cam_ctrl:      Node3D = null
 var _initialized:   bool   = false
+var _connected_move_players: Dictionary = {}
 
 func _ready() -> void:
     # Esperar suficientes frames para que start_game ya haya corrido
@@ -40,21 +41,30 @@ func _connect_all() -> void:
     print("Señal turn_started conectada: ", _game_manager.turn_started.is_connected(_on_turn_started))
     _game_manager.game_over.connect(_on_game_over)
     _connect_player_moves()
+    _token_manager.create_tokens(GameState.players)
     _initialized = true
     print("Bridge conectado. game_manager: ", _game_manager)
     print("Bridge token_manager: ", _token_manager)
 
 func _connect_player_moves() -> void:
     for i in range(GameState.players.size()):
-        var p_node = get_tree().root.find_child("Player_%d" % i, true, false)
-        if p_node and p_node.has_signal("moved"):
-            var idx = i
-            p_node.moved.connect(func(new_pos: int, _passed_go: bool):
-                if _token_manager:
-                    _token_manager.move_token_to(idx, new_pos)
-            )
+        _connect_single_player_move(i)
+
+func _connect_single_player_move(i: int) -> void:
+    if _connected_move_players.has(i):
+        return
+    var p_node = get_tree().root.find_child("Player_%d" % i, true, false)
+    if p_node == null or not p_node.has_signal("moved"):
+        return
+    var idx = i
+    p_node.moved.connect(func(new_pos: int, _passed_go: bool):
+        if _token_manager:
+            _token_manager.move_token_to(idx, new_pos)
+    )
+    _connected_move_players[i] = true
 
 func _on_turn_started(player_index: int) -> void:
+    _connect_player_moves()
     print("Turn started idx:", player_index, " tokens:", _token_manager.token_nodes.size() if _token_manager else "null")
     print("=== TURN STARTED llamado, idx: ", player_index)
     
