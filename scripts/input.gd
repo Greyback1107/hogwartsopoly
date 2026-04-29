@@ -1,0 +1,7 @@
+[b]texto en negrita[/b]
+[i]texto en cursiva[/i]
+[s]texto tachado[/s]
+[font_size=12]texto más pequeño[/font_size]
+[font_size=20]texto más grande[/font_size]
+[color=#FFD700]texto dorado[/color]
+[center]texto centrado[/center]

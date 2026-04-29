@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dlpbs174clk28"]
+
+[ext_resource type="Script" uid="uid://dl4t55cr70plp" path="res://scripts/setup_screen.gd" id="1_74idx"]
+[ext_resource type="Script" uid="uid://nj3hoxweswgr" path="res://scripts/setup_manager.gd" id="2_j878g"]
+
+[node name="SetupScreen" type="Control" unique_id=1371747231]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_74idx")
+
+[node name="SetupManager" type="Node" parent="." unique_id=72972428]
+script = ExtResource("2_j878g")
+
+[node name="Panels" type="Control" parent="." unique_id=548621282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelPlayerCount" type="Control" parent="Panels" unique_id=1538762554]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="ButtonRow" type="HBoxContainer" parent="Panels/PanelPlayerCount" unique_id=417597001]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="PanelPlayerConfig" type="Control" parent="Panels" unique_id=1059136598]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblSlot" type="Label" parent="Panels/PanelPlayerConfig" unique_id=1346071977]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="InputName" type="LineEdit" parent="Panels/PanelPlayerConfig" unique_id=1382042530]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 68.5
+offset_bottom = 31.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HouseSelector" type="HBoxContainer" parent="Panels/PanelPlayerConfig" unique_id=16947009]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 100.0
+offset_right = 40.0
+offset_bottom = 140.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TokenGrid" type="GridContainer" parent="Panels/PanelPlayerConfig" unique_id=1165761661]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -540.0
+offset_right = -320.0
+offset_bottom = -500.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="PanelBoardSelect" type="Control" parent="Panels" unique_id=1701727000]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panels/PanelBoardSelect" unique_id=2143603714]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panels/PanelBoardSelect/VBoxContainer" unique_id=1963156029]
+layout_mode = 2
+text = "Selecciona el tablero"
+
+[node name="BtnDefault" type="Button" parent="Panels/PanelBoardSelect/VBoxContainer" unique_id=1533459486]
+layout_mode = 2
+text = "Tableto clásico de Hogwarts"
+
+[node name="BtnCustom" type="Button" parent="Panels/PanelBoardSelect/VBoxContainer" unique_id=1777517870]
+layout_mode = 2
+text = "Cargar tablero personalizado"
+
+[node name="PanelSummary" type="Control" parent="Panels" unique_id=1942480061]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SummaryList" type="VBoxContainer" parent="Panels/PanelSummary" unique_id=1412748404]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BtnStart" type="Button" parent="Panels/PanelSummary" unique_id=1721649852]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Panels/PanelBoardSelect/VBoxContainer/BtnDefault" to="SetupManager" method="use_default_board"]

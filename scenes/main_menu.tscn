@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://djwdia6f61p53"]
+
+[ext_resource type="Script" uid="uid://cc8n3nes0qn7y" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="Control" type="Control" unique_id=1219019287]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="TitleContainer" type="VBoxContainer" parent="." unique_id=1980927661]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 201.0
+offset_bottom = 200.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="LblTitle" type="Label" parent="TitleContainer" unique_id=1052487352]
+layout_mode = 2
+text = "Monopoly Harry Potter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LblSubtitle" type="Label" parent="TitleContainer" unique_id=1036689788]
+layout_mode = 2
+text = "El mundo mágico en un tablero"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1878752449]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer" unique_id=1520823730]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnNewGame" type="Button" parent="CenterContainer/VBox" unique_id=2084314205]
+layout_mode = 2
+text = "Nueva Partida"
+
+[node name="BtnLoad" type="Button" parent="CenterContainer/VBox" unique_id=612278520]
+layout_mode = 2
+text = "Cargar Partida"
+
+[node name="BtnEditor" type="Button" parent="CenterContainer/VBox" unique_id=217971097]
+layout_mode = 2
+text = "Editor de Tablero"
+
+[node name="BtnRules" type="Button" parent="CenterContainer/VBox" unique_id=1616471814]
+layout_mode = 2
+text = "Reglas"
+
+[node name="BtnQuit" type="Button" parent="CenterContainer/VBox" unique_id=179926569]
+layout_mode = 2
+text = "Salir"
+
+[node name="RulesPanel" type="PanelContainer" parent="." unique_id=423804027]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LblVersion" type="Label" parent="." unique_id=1826492183]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0

@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://eakuqh7rdlgn"]
+
+[ext_resource type="Script" uid="uid://bilxm6o84n072" path="res://scripts/hud.gd" id="1_ahhtf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1103744895]
+script = ExtResource("1_ahhtf")
+
+[node name="TopBar" type="HBoxContainer" parent="." unique_id=790031072]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="LblTurn" type="Label" parent="TopBar" unique_id=462569951]
+layout_mode = 2
+
+[node name="LblPhase" type="Label" parent="TopBar" unique_id=1146845004]
+layout_mode = 2
+
+[node name="PlayersPanel" type="PanelContainer" parent="." unique_id=1734671144]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="PlayersPanel" unique_id=1974325433]
+layout_mode = 2
+
+[node name="LogPanel" type="PanelContainer" parent="." unique_id=1945304716]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LogPanel" unique_id=1546889337]
+layout_mode = 2
+
+[node name="ActionBar" type="HBoxContainer" parent="." unique_id=818806330]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BtnRoll" type="Button" parent="ActionBar" unique_id=979338359]
+layout_mode = 2
+
+[node name="BtnEndTurn" type="Button" parent="ActionBar" unique_id=80025752]
+layout_mode = 2
+
+[node name="BtnProperties" type="Button" parent="ActionBar" unique_id=614874754]
+layout_mode = 2
+
+[node name="PurchasePanel" type="PanelContainer" parent="." unique_id=152288940]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Vbox" type="VBoxContainer" parent="PurchasePanel" unique_id=272351441]
+layout_mode = 2
+
+[node name="LblName" type="Label" parent="PurchasePanel/Vbox" unique_id=2029802097]
+layout_mode = 2
+
+[node name="LblPrice" type="Label" parent="PurchasePanel/Vbox" unique_id=1708814923]
+layout_mode = 2
+
+[node name="LblRent" type="RichTextLabel" parent="PurchasePanel/Vbox" unique_id=2063216963]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="Buttons" type="HBoxContainer" parent="PurchasePanel/Vbox" unique_id=397237498]
+layout_mode = 2
+
+[node name="BtnBuy" type="Button" parent="PurchasePanel/Vbox/Buttons" unique_id=687595510]
+layout_mode = 2
+
+[node name="BtnDecline" type="Button" parent="PurchasePanel/Vbox/Buttons" unique_id=81524690]
+layout_mode = 2
+
+[node name="AuctionPanel" type="PanelContainer" parent="." unique_id=1687292151]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="AuctionPanel" unique_id=1164950829]
+layout_mode = 2
+
+[node name="LblTitle" type="Label" parent="AuctionPanel/VBox" unique_id=1193285177]
+layout_mode = 2
+
+[node name="LblCurrentBid" type="Label" parent="AuctionPanel/VBox" unique_id=460705762]
+layout_mode = 2
+
+[node name="LblBidder" type="Label" parent="AuctionPanel/VBox" unique_id=1154322089]
+layout_mode = 2
+
+[node name="InputBid" type="SpinBox" parent="AuctionPanel/VBox" unique_id=1096645310]
+layout_mode = 2
+
+[node name="BidderList" type="VBoxContainer" parent="AuctionPanel/VBox" unique_id=1120327557]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="AuctionPanel/VBox" unique_id=987630879]
+layout_mode = 2
+
+[node name="BtnPass" type="Button" parent="AuctionPanel/VBox/Buttons" unique_id=2074837386]
+layout_mode = 2
+
+[node name="BtnBid" type="Button" parent="AuctionPanel/VBox/Buttons" unique_id=1206219877]
+layout_mode = 2
+
+[node name="PropertiesPanel" type="PanelContainer" parent="." unique_id=2021460854]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="PropertiesPanel" unique_id=1643325978]
+layout_mode = 2
+
+[node name="GameOverOverlay" type="ColorRect" parent="." unique_id=1653636089]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LblWinner" type="Label" parent="GameOverOverlay" unique_id=1313962790]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

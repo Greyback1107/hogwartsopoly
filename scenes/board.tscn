@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://55q1weycffk7"]
+
+[ext_resource type="Script" uid="uid://8jwpcttr17er" path="res://scripts/game_manager.gd" id="1_wmvsh"]
+[ext_resource type="Script" uid="uid://clqbm151ui8al" path="res://scripts/dice.gd" id="2_n230i"]
+[ext_resource type="Script" uid="uid://c7vrocvx0vp78" path="res://scripts/purchase_manager.gd" id="3_ar2e0"]
+[ext_resource type="Script" uid="uid://63vaxxg0f7dx" path="res://scripts/auction_manager.gd" id="4_pnb36"]
+[ext_resource type="Script" uid="uid://dayk6y2u55ow5" path="res://scripts/board.gd" id="5_mvl7x"]
+[ext_resource type="Script" uid="uid://cmbi5x2makyuv" path="res://scripts/board_scene_3d.gd" id="6_4bs3u"]
+[ext_resource type="Script" uid="uid://b6jmbfxbmsaal" path="res://scripts/castle_3d.gd" id="6_os6cd"]
+[ext_resource type="PackedScene" uid="uid://cah87vusd8t35" path="res://assets/models/castle/hogwarts.glb" id="7_v21d4"]
+[ext_resource type="Script" uid="uid://ewsr3qlq1jpe" path="res://scripts/token_manager.gd" id="8_5pkjh"]
+[ext_resource type="Script" uid="uid://bilxm6o84n072" path="res://scripts/hud.gd" id="8_ba0us"]
+[ext_resource type="Script" uid="uid://cp1sraj5b8hou" path="res://scripts/camera_controller.gd" id="17_r6ya7"]
+[ext_resource type="Script" uid="uid://c4cwfwblqhw0d" path="res://scripts/bridge_3d.gd" id="22_pln8w"]
+
+[node name="Board" type="Node3D" unique_id=821104493]
+
+[node name="GameManager" type="Node" parent="." unique_id=1732067508]
+script = ExtResource("1_wmvsh")
+
+[node name="Dice" type="Node" parent="GameManager" unique_id=409325815]
+script = ExtResource("2_n230i")
+
+[node name="PurchaseManager" type="Node" parent="GameManager" unique_id=706574377]
+script = ExtResource("3_ar2e0")
+
+[node name="AuctionManager" type="Node" parent="GameManager" unique_id=853778705]
+script = ExtResource("4_pnb36")
+
+[node name="BoardLogic" type="Node" parent="." unique_id=777378472]
+script = ExtResource("5_mvl7x")
+
+[node name="BoardScene3D" type="Node3D" parent="." unique_id=964068835]
+script = ExtResource("6_4bs3u")
+
+[node name="TilesRoot" type="Node3D" parent="BoardScene3D" unique_id=1976196090]
+
+[node name="CastleRoot" type="Node3D" parent="BoardScene3D" unique_id=1481333719]
+script = ExtResource("6_os6cd")
+
+[node name="hogwarts" parent="BoardScene3D/CastleRoot" unique_id=221509439 instance=ExtResource("7_v21d4")]
+
+[node name="TokensRoot" type="Node3D" parent="BoardScene3D" unique_id=1162287412]
+script = ExtResource("8_5pkjh")
+
+[node name="IsometricCamera" type="Node3D" parent="BoardScene3D" unique_id=69137363]
+script = ExtResource("17_r6ya7")
+
+[node name="Camera3D" type="Camera3D" parent="BoardScene3D/IsometricCamera" unique_id=1464130601]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="BoardScene3D" unique_id=214277317]
+transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.81915206, 0.5, -0.7094065, 0.49673176, 0, 0, 0)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="FillLight" type="OmniLight3D" parent="BoardScene3D" unique_id=1608056220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+light_color = Color(0.7882353, 0.65882355, 0.29803923, 1)
+light_energy = 0.8
+omni_range = 20.0
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1401446655]
+script = ExtResource("8_ba0us")
+
+[node name="TopBar" type="HBoxContainer" parent="HUD" unique_id=1320276538]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -70.0
+offset_right = -70.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="LblTurn" type="Label" parent="HUD/TopBar" unique_id=1140994326]
+layout_mode = 2
+text = "Turno de..."
+
+[node name="LblPhase" type="Label" parent="HUD/TopBar" unique_id=2043404601]
+layout_mode = 2
+text = "Casa"
+
+[node name="PlayersPanel" type="PanelContainer" parent="HUD" unique_id=1334948964]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_right = -1740.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="HUD/PlayersPanel" unique_id=370677935]
+layout_mode = 2
+
+[node name="LogPanel" type="PanelContainer" parent="HUD" unique_id=830835766]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -1120.0
+offset_right = 180.0
+offset_bottom = -960.0
+grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/LogPanel" unique_id=1694990517]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="ActionBar" type="HBoxContainer" parent="HUD" unique_id=2115717043]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -1111.0
+offset_right = 191.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, -52)
+
+[node name="BtnRoll" type="Button" parent="HUD/ActionBar" unique_id=1240447257]
+layout_mode = 2
+text = "Lanzar dados"
+
+[node name="BtnEndTurn" type="Button" parent="HUD/ActionBar" unique_id=392007227]
+layout_mode = 2
+text = "Terminar turno"
+
+[node name="BtnProperties" type="Button" parent="HUD/ActionBar" unique_id=635709414]
+layout_mode = 2
+text = "Mis propiedades"
+
+[node name="PurchasePanel" type="PanelContainer" parent="HUD" unique_id=971526671]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1051.5
+offset_top = -560.0
+offset_right = -868.5
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="HUD/PurchasePanel" unique_id=475878456]
+layout_mode = 2
+
+[node name="LblName" type="Label" parent="HUD/PurchasePanel/VBox" unique_id=865768024]
+layout_mode = 2
+
+[node name="LblPrice" type="Label" parent="HUD/PurchasePanel/VBox" unique_id=810816917]
+layout_mode = 2
+
+[node name="LblRent" type="RichTextLabel" parent="HUD/PurchasePanel/VBox" unique_id=1501232945]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="Buttons" type="HBoxContainer" parent="HUD/PurchasePanel/VBox" unique_id=641815811]
+layout_mode = 2
+
+[node name="BtnBuy" type="Button" parent="HUD/PurchasePanel/VBox/Buttons" unique_id=2094220593]
+layout_mode = 2
+text = "Comprar"
+
+[node name="BtnDecline" type="Button" parent="HUD/PurchasePanel/VBox/Buttons" unique_id=1818820152]
+layout_mode = 2
+text = "No comprar (subastar)"
+
+[node name="AuctionPanel" type="PanelContainer" parent="HUD" unique_id=2063299357]
+custom_minimum_size = Vector2(340, 380)
+offset_right = 86.5
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="HUD/AuctionPanel" unique_id=827614838]
+layout_mode = 2
+
+[node name="LblTitle" type="Label" parent="HUD/AuctionPanel/VBox" unique_id=1959876520]
+layout_mode = 2
+
+[node name="LblCurrentBid" type="Label" parent="HUD/AuctionPanel/VBox" unique_id=1217568730]
+layout_mode = 2
+
+[node name="LblBidder" type="Label" parent="HUD/AuctionPanel/VBox" unique_id=189779932]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/AuctionPanel/VBox" unique_id=1216421057]
+layout_mode = 2
+
+[node name="InputBid" type="SpinBox" parent="HUD/AuctionPanel/VBox/HBoxContainer" unique_id=1691228321]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="BtnBid" type="Button" parent="HUD/AuctionPanel/VBox/HBoxContainer" unique_id=761400172]
+layout_mode = 2
+text = "Pujar"
+
+[node name="BtnPass" type="Button" parent="HUD/AuctionPanel/VBox/HBoxContainer" unique_id=1165942184]
+layout_mode = 2
+text = "Pasar"
+
+[node name="BiddersList" type="VBoxContainer" parent="HUD/AuctionPanel/VBox/HBoxContainer" unique_id=895943162]
+layout_mode = 2
+
+[node name="PropertiesPanel" type="PanelContainer" parent="HUD" unique_id=1775947644]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="HUD/PropertiesPanel" unique_id=1273941966]
+layout_mode = 2
+
+[node name="GameOverOverlay" type="ColorRect" parent="HUD" unique_id=187254029]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.9490196)
+
+[node name="LblWinner" type="Label" parent="HUD" unique_id=1775855905]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -980.0
+offset_top = -551.5
+offset_right = -940.0
+offset_bottom = -528.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bridge3D" type="Node" parent="." unique_id=81571936]
+script = ExtResource("22_pln8w")

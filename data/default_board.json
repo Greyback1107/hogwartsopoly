@@ -1,0 +1,1061 @@
+{
+  "name": "Mundo Mágico Clásico",
+  "version": "1.0",
+  "currency": "Puntos de Casa",
+  "jail_name": "Azkaban",
+  "go_name": "Salida de Hogwarts",
+  "tiles": [
+    {
+      "id": 0,
+      "name": "Salida de Hogwarts",
+      "type": "go",
+      "color": "#FFD700",
+      "salary": 20
+    },
+    {
+      "id": 1,
+      "name": "El Lago Negro",
+      "type": "property",
+      "color_group": "brown",
+      "price": 10,
+      "rent": [
+        10,
+        20,
+        40
+      ],
+      "shield_cost": 20,
+      "mortgage": 10,
+      "description": "Lago al sur del castillo, en el habitan criaturas como el calamar gigante, sirenas y grindylows"
+    },
+    {
+      "id": 2,
+      "name": "Lechuzas Mensajeras",
+      "type": "owl_letters",
+      "color": "#FF8C00"
+    },
+    {
+      "id": 3,
+      "name": "La Lechucería",
+      "type": "property",
+      "color_group": "brown",
+      "price": 10,
+      "rent": [
+        10,
+        20,
+        40
+      ],
+      "shield_cost": 20,
+      "mortgage": 10,
+      "description": "Situada en la parte más alta de la de torre oeste del Castillo. Es donde las lechuzas de los estudiantes viven durante el año escolar."
+    },
+    {
+      "id": 4,
+      "name": "Filch",
+      "type": "tax",
+      "color_group": null,
+      "price": null,
+      "rent": null,
+      "shield_cost": null,
+      "mortgage": 20,
+      "description": "Conserje del castillo ensañado por castigar la mayor cantidad posible de estudiantes"
+    },
+    {
+      "id": 5,
+      "name": "Sala Común de Gryffindor",
+      "type": "property",
+      "color_group": "common_room",
+      "price": 20,
+      "rent": [
+        10,
+        20,
+        40,
+        80
+      ],
+      "mortgage": 10,
+      "description": "Ubicada en el sétimo piso, en una de las torres más altas. Su entrada es cuidada por el retrato de la Dama Gorda.",
+      "landing_rules": {
+        "if_visitor_is_owner_house": {
+          "house": "Gryffindor",
+          "exempt_from_rent": true,
+          "description": "Si el jugador que cae pertenece a Gryffindor, no paga renta."
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "Estadio de Quidditch",
+      "type": "property",
+      "color_group": "cyan",
+      "price": 10,
+      "rent": [
+        10,
+        20,
+        40
+      ],
+      "shield_cost": 20,
+      "mortgage": 10,
+      "description": "Arena ovalada situada en las afueras del castillo, rodeada de torres para espectadores."
+    },
+    {
+      "id": 7,
+      "name": "Lechuzas Mensajeras",
+      "type": "owl_letters",
+      "color": "#FF8C00"
+    },
+    {
+      "id": 8,
+      "name": "Cabaña de Hagrid",
+      "type": "property",
+      "color_group": "cyan",
+      "price": 10,
+      "rent": [
+        10,
+        20,
+        40
+      ],
+      "shield_cost": 20,
+      "mortgage": 10,
+      "description": "Hogar del guardabosques de Hogwarts, Hagrid y su perro jabalinero Fang."
+    },
+    {
+      "id": 9,
+      "name": "Bosque Prohibido",
+      "type": "property",
+      "color_group": "cyan",
+      "price": 10,
+      "rent": [
+        10,
+        20,
+        40
+      ],
+      "shield_cost": 20,
+      "mortgage": 10,
+      "description": "Bosque en los límites del terreno del Castillo, habitado por criaturas mágicas y cuyo acceso está prohibido para los alumnos."
+    },
+    {
+      "id": 10,
+      "name": "Azkaban / De visita nada más",
+      "type": "jail",
+      "color": "#708090"
+    },
+    {
+      "id": 11,
+      "name": "Estación de Hogsmeade",
+      "type": "property",
+      "color_group": "magenta",
+      "price": 20,
+      "rent": [
+        20,
+        40,
+        80
+      ],
+      "shield_cost": 40,
+      "mortgage": 10,
+      "description": "Estación de tren en el pueblo de Hogsmeade. El expreso de Hogwarts llega ahi para trasladar a los alumnos hacia y desde Londres."
+    },
+    {
+      "id": 12,
+      "name": "Lumos",
+      "type": "spell",
+      "color_group": "spell",
+      "price": 20,
+      "shield_cost": null,
+      "mortgage": 10,
+      "rent_rule": {
+        "type": "dice_based",
+        "condition_item": "spell",
+        "condition_variants": {
+          "one": {
+            "formula": "2d6",
+            "rule": "take_highest",
+            "multiplier": 10,
+            "description": "Posee un hechizo: tira 2 dados, usa el mayor x10"
+          },
+          "both": {
+            "formula": "2d6",
+            "rule": "take_both",
+            "multiplier": 10,
+            "description": "Posee ambos hechizos: suma ambos dados x10"
+          }
+        }
+      },
+      "description": "Quien controle la luz, controla el camino."
+    },
+    {
+      "id": 13,
+      "name": "Las Tres Escobas",
+      "type": "property",
+      "color_group": "magenta",
+      "price": 20,
+      "rent": [
+        20,
+        40,
+        80
+      ],
+      "shield_cost": 40,
+      "mortgage": 10,
+      "description": "El bar más popular del pueblo de Hogsmeade.Manejado por Madame Rosmerta."
+    },
+    {
+      "id": 14,
+      "name": "Honeydukes",
+      "type": "property",
+      "color_group": "magenta",
+      "price": 20,
+      "rent": [
+        20,
+        40,
+        80
+      ],
+      "shield_cost": 40,
+      "mortgage": 10,
+      "description": "Tienda de dulces del pueblo de Hogsmeade."
+    },
+    {
+      "id": 15,
+      "name": "Sala Común de Hufflepuff",
+      "type": "property",
+      "color_group": "common_room",
+      "price": 20,
+      "rent": [
+        20,
+        40,
+        80
+      ],
+      "mortgage": 10,
+      "description": "Espacio subterráneo acogedor, cálido y redondo, cercano a las cocinas en Hogwarts.",
+      "landing_rules": {
+        "if_visitor_is_owner_house": {
+          "house": "Hufflepuff",
+          "exempt_from_rent": true,
+          "description": "Si el jugador que cae pertenece a Hufflepuff, no paga renta."
+        }
+      }
+    },
+    {
+      "id": 16,
+      "name": "Zonko",
+      "type": "property",
+      "color_group": "orange",
+      "price": 20,
+      "rent": [
+        20,
+        40,
+        80
+      ],
+      "shield_cost": 40,
+      "mortgage": 10,
+      "description": "La mejor tienda de artículos de bromas en el pueblo de Hogsmeade."
+    },
+    {
+      "id": 17,
+      "name": "Lechuzas Mensajeras",
+      "type": "owl_letters",
+      "color": "#FF8C00"
+    },
+    {
+      "id": 18,
+      "name": "Cabeza de Puerco",
+      "type": "property",
+      "color_group": "orange",
+      "price": 20,
+      "rent": [
+        20,
+        40,
+        80
+      ],
+      "shield_cost": 40,
+      "mortgage": 10,
+      "description": "El otro bar del pueblo de Hogsmeade, menos popular, manejado por Aberfofth Dumbledore."
+    },
+    {
+      "id": 19,
+      "name": "Casa de los Gritos",
+      "type": "property",
+      "color_group": "orange",
+      "price": 20,
+      "rent": [
+        20,
+        40,
+        80
+      ],
+      "shield_cost": 40,
+      "mortgage": 10,
+      "description": "Antigua propiedad a las afueras de Hogsmeade. La leyenda dice que es la casa más embrujada de Inglaterra."
+    },
+    {
+      "id": 20,
+      "name": "Parada Libre"
+    },
+    {
+      "id": 21,
+      "name": "Enfermería",
+      "type": "property",
+      "color_group": "red",
+      "price": 30,
+      "rent": [
+        30,
+        60,
+        120
+      ],
+      "shield_cost": 60,
+      "mortgage": 20,
+      "description": "Hospital del colegio donde los heridos o hechizados acuden para ser atendidos por la señora Pomfrey."
+    },
+    {
+      "id": 22,
+      "name": "Lechuzas Mensajeras",
+      "type": "owl_letters",
+      "color": "#FF8C00"
+    },
+    {
+      "id": 23,
+      "name": "Torre de Astronomía",
+      "type": "property",
+      "color_group": "red",
+      "price": 30,
+      "rent": [
+        30,
+        60,
+        120
+      ],
+      "shield_cost": 60,
+      "mortgage": 20,
+      "description": "La torre más alta del castillo, aqui ocurren las clases con la profesora Sinistra."
+    },
+    {
+      "id": 24,
+      "name": "Las Grandes Escaleras",
+      "type": "property",
+      "color_group": "red",
+      "price": 30,
+      "rent": [
+        30,
+        60,
+        120
+      ],
+      "shield_cost": 60,
+      "mortgage": 20,
+      "description": "El corazón del castillo, las escaleras cambian constantemente de posición para desviarte del camino."
+    },
+    {
+      "id": 25,
+      "name": "Sala Común de Ravenclaw",
+      "type": "property",
+      "color_group": "common_room",
+      "price": 20,
+      "rent": [
+        20,
+        40,
+        80
+      ],
+      "mortgage": 10,
+      "description": "Habitación amplia, circular y ventilada, situada en lo alto de la torre oeste.",
+      "landing_rules": {
+        "if_visitor_is_owner_house": {
+          "house": "Ravenclaw",
+          "exempt_from_rent": true,
+          "description": "Si el jugador que cae pertenece a Ravenclaw, no paga renta."
+        }
+      }
+    },
+    {
+      "id": 26,
+      "name": "Baño de Prefectos",
+      "type": "property",
+      "color_group": "yellow",
+      "price": 30,
+      "rent": [
+        30,
+        60,
+        120
+      ],
+      "shield_cost": 60,
+      "mortgage": 20,
+      "description": "Baño para uso exclusivo de prefectos, premios anuales y capitanes de Quidditch. Ubicado en el quinto piso"
+    },
+    {
+      "id": 27,
+      "name": "Biblioteca",
+      "type": "property",
+      "color_group": "yellow",
+      "price": 30,
+      "rent": [
+        30,
+        60,
+        120
+      ],
+      "shield_cost": 60,
+      "mortgage": 20,
+      "description": "Hogar del conocimiento en Hogwarts (y de Hermione Granger)"
+    },
+    {
+      "id": 28,
+      "name": "Aguamenti",
+      "type": "spell",
+      "color_group": "spell",
+      "price": 20,
+      "shield_cost": null,
+      "mortgage": 10,
+      "rent_rule": {
+        "type": "dice_based",
+        "condition_item": "spell",
+        "condition_variants": {
+          "one": {
+            "formula": "2d6",
+            "rule": "take_highest",
+            "multiplier": 10,
+            "description": "Posee un hechizo: tira 2 dados, usa el mayor x10"
+          },
+          "both": {
+            "formula": "2d6",
+            "rule": "take_both",
+            "multiplier": 10,
+            "description": "Posee ambos hechizos: suma ambos dados x10"
+          }
+        }
+      },
+      "description": "Hechizo que permite invocar un chorro de agua pura y potable de la punta de la varita."
+    },
+    {
+      "id": 29,
+      "name": "Gran Salón",
+      "type": "property",
+      "color_group": "yellow",
+      "price": 30,
+      "rent": [
+        30,
+        60,
+        120
+      ],
+      "shield_cost": 60,
+      "mortgage": 20,
+      "description": "Salón principal del colegio, donde toman parte la Ceremonia de Selección y los banquetes diarios."
+    },
+    {
+      "id": 30,
+      "name": "Ve a la Carcel",
+      "type": "punishment",
+      "color": "#708090"
+    },
+    {
+      "id": 31,
+      "name": "Aula de Defensa Contra las Artes Oscuras",
+      "type": "property",
+      "color_group": "green",
+      "price": 40,
+      "rent": [
+        40,
+        80,
+        160
+      ],
+      "shield_cost": 50,
+      "mortgage": 20,
+      "description": "Ubicada en el tercer piso ha tenido más profesores que ninguna otra materia."
+    },
+    {
+      "id": 32,
+      "name": "Invernaderos",
+      "type": "property",
+      "color_group": "green",
+      "price": 40,
+      "rent": [
+        40,
+        80,
+        160
+      ],
+      "shield_cost": 50,
+      "mortgage": 20,
+      "description": "Lugar en los terrenos del castillo donde toman parte la clases de Herbología de la profesora Sprout."
+    },
+    {
+      "id": 33,
+      "name": "Lechuzas Mensajeras",
+      "type": "owl_letters",
+      "color": "#FF8C00"
+    },
+    {
+      "id": 34,
+      "name": "Aula de Pociones",
+      "type": "property",
+      "color_group": "green",
+      "price": 40,
+      "rent": [
+        40,
+        80,
+        160
+      ],
+      "shield_cost": 50,
+      "mortgage": 20,
+      "description": "Ubicada en las Mazmorras."
+    },
+    {
+      "id": 35,
+      "name": "Sala Común de Slytherin",
+      "type": "property",
+      "color_group": "common_room",
+      "price": 20,
+      "rent": [
+        20,
+        40,
+        80
+      ],
+      "mortgage": 10,
+      "description": "Habitación subterránea larga y baja, con paredes y techo de piedra tosca.",
+      "landing_rules": {
+        "if_visitor_is_owner_house": {
+          "house": "Slytherin",
+          "exempt_from_rent": true,
+          "description": "Si el jugador que cae pertenece a Slytherin, no paga renta."
+        }
+      }
+    },
+    {
+      "id": 36,
+      "name": "Lechuzas Mensajeras",
+      "type": "owl_letters",
+      "color": "#FF8C00"
+    },
+    {
+      "id": 37,
+      "name": "Sala de Menesteres",
+      "type": "property",
+      "color_group": "blue",
+      "price": 50,
+      "rent": [
+        50,
+        100,
+        200
+      ],
+      "shield_cost": 100,
+      "mortgage": 30,
+      "description": "Ubicada en las Mazmorras."
+    },
+    {
+      "id": 38,
+      "name": "Señora Norris",
+      "type": "tax",
+      "color_group": null,
+      "price": null,
+      "rent": null,
+      "shield_cost": null,
+      "mortgage": 10,
+      "description": "Mascota del Conserje del colegio, siempre alerta al celador si ve alumnos por los pasillos"
+    },
+    {
+      "id": 39,
+      "name": "Despacho de Dumbledore",
+      "type": "property",
+      "color_group": "blue",
+      "price": 50,
+      "rent": [
+        50,
+        100,
+        200
+      ],
+      "shield_cost": 100,
+      "mortgage": 30,
+      "description": "Ubicada en el tercer piso, custodiada por una gárgola encantada."
+    }
+  ],
+  "card_decks": {
+    "owl_post": {
+      "name": "Lechuzas Mensajeras",
+      "cards": [
+        {
+          "id": "owl_001",
+          "text": "Encuentras un pasaje secreto muy extraño detras de una estatua del tercer piso. Te adentras en él y... ¡zas! MUÉVETE A CUALQUIER CASILLA. SIGUE LAS INSTRUCCIONES DE ESA CASILLA DEL TABLERO.",
+          "text_formatted": "[center][font_size=13]Encuentras un pasaje secreto muy extraño detras de una estatua del tercer piso. Te adentras en él y... ¡zas![/font_size][/i]\n\n[b][/font_size=18] MUÉVETE A CUALQUIER CASILLA. SIGUE LAS INSTRUCCIONES DE ESA CASILLA DEL TABLERO.[/font_size][/b][/center]",
+          "keep": false,
+          "effect": {
+            "action": "move_to_tile_choice",
+            "chooser": "self",
+            "exclude_types": [
+              "go_to_jail",
+              "jail",
+              "tax"
+            ],
+            "landing_override": {
+              "always": "follow_normal_rules"
+            }
+          }
+        },
+        {
+          "id": "owl_002",
+          "text": "La Dama Gorda no te dejará entrar a la sala común sin la contraseña. Por suerte, ¡la recuerdas sin tener que pedir ayuda al Prefecto! VE DIRECTAMENTE A LA PRÓXIMA SALA COMÚN. SI PASAS POR LA CASILLA DE SALIDA, RECIBIRÁS 20 PUNTOS DE CASA. Si NO SE HA EXPLORADO, puedes comprárselo al banco. Si YA SE HA EXPLORADO, paga a su dueño el doble de la renta que aparece en la tarjeta.",
+          "text_formatted": "[center][font_size=13]La Dama Gorda no te dejará entrar a la sala común sin la contraseña. Por suerte, ¡la recuerdas sin tener que pedir ayuda al Prefecto![/font_size][/i]\n\n[b][/font_size=18] VE DIRECTAMENTE A LA PRÓXIMA SALA COMÚN. SI PASAS POR LA CASILLA DE SALIDA, RECIBIRÁS 20 PUNTOS DE CASA.[/font_size][/b]\n\n[/font_size=13] Si NO SE HA EXPLORADO, puedes comprárselo al banco. Si YA SE HA EXPLORADO, paga a su dueño el doble de la renta que aparece en la tarjeta.[/font_size][/center]",
+          "keep": false,
+          "effect": {
+            "action": "move_to_nearest",
+            "tile_type": "common_room",
+            "pass_go_bonus": 20,
+            "landing_override": {
+              "if_owned": "pay_double_rent",
+              "if_unowned": "can_buy"
+            }
+          }
+        },
+        {
+          "id": "owl_003",
+          "text": "¡Descubres a gente de Slytherin intentando robar los escarbatos de Hagrid y decides enfrentarlos! RECIBES 10 PUNTOS DE CASA. Si perteneces a Gryffindor, recibes 20 puntos de casa.",
+          "text_formatted": "[center][font_size=13]¡Descubres a gente de Slytherin intentando robar los escarbatos de Hagrid y decides enfrentarlos![/font_size][/i]\n\n[b][/font_size=18] RECIBES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si perteneces a Gryffindor, recibes 20 puntos de casa.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "gain_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Gryffindor": {
+                "action": "gain_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_004",
+          "text": "Conserva esta tarjeta y úsala cuando la necesites. Tomas una gragea Bertie Bott de todo los sabores y le das a tu amigo una con sabor a moco.¡Una broma digna de los famosos gemelos Weasley! OBLIGA A UN JUGADOR A PREMIARTE CON LA RENTA DE TODAS LAS PROPIEDADES QUE POSEAS EN UNO DE ESTOS COLORES: celeste, rojo, amarillo.",
+          "text_formatted": "[center][i][font_size=10]Conserva esta tarjeta y úsala cuando la necesites.[/font_size]\n\n[font_size=13] Tomas una gragea Bertie Bott de todo los sabores y le das a tu amigo una con sabor a moco.¡Una broma digna de los famosos gemelos Weasley![/font_size][/i]\n\n[b][/font_size=18] OBLIGA A UN JUGADOR A PREMIARTE CON LA RENTA DE TODAS LAS PROPIEDADES QUE POSEAS EN UNO DE ESTOS COLORES:[/font_size][/b]\n[font_size=13] celeste, rojo, amarillo.[/font_size][/center]",
+          "keep": true,
+          "effect": {
+            "action": "collect_rent_from_player",
+            "chooser": "self",
+            "color_groups": [
+              "light_blue",
+              "red",
+              "yellow"
+            ],
+            "source": "choose_player"
+          }
+        },
+        {
+          "id": "owl_005",
+          "text": "Conserva esta tarjeta y úsala cuando la necesites. En la clase de Transformaciones, bajo la mirada de la severa profesora McGonagall, ¡perfeccionas un hechizo permutador! INTERCAMBIA UNA DE TUS PROPIEDADES POR CUALQUIERA DE LAS PROPIEDADES DE OTRO JUGADOR. NO PUEDES INTERCAMBIAR PROPIEDADES QUE FORMAN PARTE DE UN GRUPO COMPLETO.",
+          "text_formatted": "[center][i][font_size=10]Conserva esta tarjeta y úsala cuando la necesites.[/font_size]\n\n[font_size=13] En la clase de Transformaciones, bajo la mirada de la severa profesora McGonagall, ¡perfeccionas un hechizo permutador![/font_size][/i]\n\n[b][/font_size=18] INTERCAMBIA UNA DE TUS PROPIEDADES POR CUALQUIERA DE LAS PROPIEDADES DE OTRO JUGADOR. NO PUEDES INTERCAMBIAR PROPIEDADES QUE FORMAN PARTE DE UN GRUPO COMPLETO.[/font_size][/b][/center]",
+          "keep": true,
+          "effect": {
+            "action": "swap_property",
+            "chooser": "self",
+            "restrict": "no_complete_group"
+          }
+        },
+        {
+          "id": "owl_006",
+          "text": "Te caes en las gradas cuando lanzan una bludger serca de ti en un partido de Quidditch entre Gryffindor y Hufflepuff. RETROCEDE CUATRO CASILLAS. SIGUE LAS INSTRUCCIONES DE ESA CASILLA DEL TABLERO. Si hay jugadores de Hufflepuff puedes obligar a alguno a moverse a esa casilla en tu lugar.",
+          "text_formatted": "[center][font_size=13]Te caes en las gradas cuando lanzan una bludger serca de ti en un partido de Quidditch entre Gryffindor y Hufflepuff.[/font_size]\n\n[b][font_size=18] RETROCEDE CUATRO CASILLAS. SIGUE LAS INSTRUCCIONES DE ESA CASILLA DEL TABLERO.[/font_size][/b]\n\n[i][font_size=13] Si hay jugadores de Hufflepuff puedes obligar a alguno a moverse a esa casilla en tu lugar.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "move_relative",
+            "steps": -4,
+            "landing_override": {
+              "always": "follow_normal_rules"
+            },
+            "house_modifiers": {
+              "target": "choose_player",
+              "condition": "target_is_house",
+              "house": "Hufflepuff",
+              "substitute_action": "move_relative",
+              "steps": -4,
+              "description": "Puedes obligar a un Hufflepuff a retroceder en tu lugar"
+            }
+          }
+        },
+        {
+          "id": "owl_007",
+          "text": "Entras a hurtadillas en la cocina a medianoche y ves a la Señora Norris. Afortunadamente, hay un armario de limpieza y logras esconderte dentro justo a tiempo para evitar que te vea. RECIBES 10 PUNTOS DE CASA. Si perteneces a Slytherin, recibes 20 puntos de casa.",
+          "text_formatted": "[center][font_size=13]Entras a hurtadillas en la cocina a medianoche y ves a la Señora Norris. Afortunadamente, hay un armario de limpieza y logras esconderte dentro justo a tiempo para evitar que te vea.[/font_size]\n\n[b][font_size=18] RECIBES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si perteneces a Slytherin, recibes 20 puntos de casa.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "gain_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Slytherin": {
+                "action": "gain_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_008",
+          "text": "¿OTRA BROMA A LOS NOVATOS? ¿CUÁNDO APRENDERÁS...? PIERDES 10 PUNTOS DE CASA. Si perteneces a Slytherin, pierdes 20 puntos de casa.",
+          "text_formatted": "[center][font_size=13]¿OTRA BROMA A LOS NOVATOS? ¿CUÁNDO APRENDERÁS...?[/font_size]\n\n[b][font_size=18] PIERDES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si perteneces a Slytherin, pierdes 20 puntos de casa.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "lose_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Slytherin": {
+                "action": "lose_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_009",
+          "text": "Al profesor Snape no le gustan los cambios que has hecho a una solución para encoger... ¡Y el hedor que hay ahora es el aula es insoportable! VE DIRECTAMENTE AL DESPACHO DE DUMBLEDORE. SI PASAS POR LA CASILLA DE SALIDA, NO RECIBIRÁS 20 PUNTOS DE CASA. Si hay jugadores de Gryffindor, puedes obligar a alguno a moverse a esa casilla en tu lugar.",
+          "text_formatted": "[center][font_size=13] Al profesor Snape no le gustan los cambios que has hecho a una solución para encoger... ¡Y el hedor que hay ahora es el aula es insoportable! [/font_size]\n\n[b][font_size=18] VE DIRECTAMENTE AL DESPACHO DE DUMBLEDORE. SI PASAS POR LA CASILLA DE SALIDA, NO RECIBIRÁS 20 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si hay jugadores de Gryffindor, puedes obligar a alguno a moverse a esa casilla en tu lugar.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "move_to_tile",
+            "tile_id": 39,
+            "pass_go_bonus": 0,
+            "landing_override": {
+              "always": "follow_normal_rules"
+            },
+            "house_modifiers": {
+              "target": "choose_player",
+              "condition": "target_is_house",
+              "house": "Gryffindor",
+              "substitute_action": "move_to_tile",
+              "tile_id": 39,
+              "description": "Puedes obligar a un Gryffindor a ir al Despacho en tu lugar"
+            }
+          }
+        },
+        {
+          "id": "owl_010",
+          "text": "Conserva esta tarjeta y úsala cuando la necesites. ¡Accio! RÓBALE UNA PROPIEDAD A CUALQUIER JUGADOR. NO PUEDES ROBAR UNA PROPIEDAD QUE FORME PARTE DE UN GRUPO COMPLETO.",
+          "text_formatted": "[center][i][font_size=10]Conserva esta tarjeta y úsala cuando la necesites.[/font_size]\n\n[font_size=13] ¡Accio![/font_size][/i]\n\n[b][/font_size=18] RÓBALE UNA PROPIEDAD A CUALQUIER JUGADOR. NO PUEDES ROBAR UNA PROPIEDAD QUE FORME PARTE DE UN GRUPO COMPLETO.[/font_size][/b][/center]",
+          "keep": true,
+          "effect": {
+            "action": "steal_property",
+            "chooser": "self",
+            "restrict": "no_complete_group"
+          }
+        },
+        {
+          "id": "owl_011",
+          "text": "Conserva esta tarjeta y úsala cuando la necesites. ¡Tu buscadora atrapa la snitch dorada! ¡Tu casa logra una impresionante victoria en Quidditch! AÑADE UN ESCUDO DE CASA A UNA PROPIEDAD EN CUALQUIER GRUPO DE COLOR COMPLETO QUE POSEAS.",
+          "text_formatted": "[center][i][font_size=10]Conserva esta tarjeta y úsala cuando la necesites.[/font_size][/i]\n\n[font_size=13] ¡Tu buscadora atrapa la snitch dorada! ¡Tu casa logra una impresionante victoria en Quidditch![/font_size]\n\n[b][font_size=18] AÑADE UN ESCUDO DE CASA A UNA PROPIEDAD EN CUALQUIER GRUPO DE COLOR COMPLETO QUE POSEAS.[/font_size][/b][/center]",
+          "keep": true,
+          "effect": {
+            "action": "add_shield",
+            "chooser": "self",
+            "restrict": "complete_group_only"
+          }
+        },
+        {
+          "id": "owl_012",
+          "text": "Conserva esta tarjeta y úsala cuando la necesites. Un compañero de clase te pide que le prestes tus notas de Herbología. Como te has esforzado tanto trasplantando mandrágoras para la profesroa Sprout, ¡te tendrá que dar algo a cambio! OBLIGA A UN JUGADOR A PREMIARTE CON LA RENTA DE TODAS LAS PROPIEDADES QUE POSEAS EN UNO DE ESTOS COLORES: magenta, naranjo, café.",
+          "text_formatted": "[center][i][font_size=10]Conserva esta tarjeta y úsala cuando la necesites.[/font_size][/i]\n\n[font_size=13] Un compañero de clase te pide que le prestes tus notas de Herbología. Como te has esforzado tanto trasplantando mandrágoras para la profesroa Sprout, ¡te tendrá que dar algo a cambio![/font_size]\n\n[b][font_size=18] OBLIGA A UN JUGADOR A PREMIARTE CON LA RENTA DE TODAS LAS PROPIEDADES QUE POSEAS EN UNO DE ESTOS COLORES:[/font_size][/b]\n\n[font_size=13] magenta, naranjo, café.[/font_size][/center]",
+          "keep": true,
+          "effect": {
+            "action": "collect_rent_from_player",
+            "chooser": "self",
+            "color_groups": [
+              "magenta",
+              "orange",
+              "brown"
+            ],
+            "source": "choose_player"
+          }
+        },
+        {
+          "id": "owl_013",
+          "text": "Durante una partida de ajedrez mágico, sacrificas el alfil y, a continuación, mueves la reina a E5. ¡Genial! ¡Has dado jaque mate! RECIBES 10 PUNTOS DE CASA. Si perteneces a Ravenclaw recibes 20 puntos de casa.",
+          "text_formatted": "[center][font_size=13]Durante una partida de ajedrez mágico, sacrificas el alfil y, a continuación, mueves la reina a E5. ¡Genial! ¡Has dado jaque mate![/font_size]\n\n[b][font_size=18] RECIBES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si perteneces a Ravenclaw recibes 20 puntos de casa.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "gain_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Ravenclaw": {
+                "action": "gain_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_014",
+          "text": "Conserva esta carta y úsala cuando la necesites. Logras sacar a escondidas un poco de la piel de serpiente y polvos de cuerno de bicornio de los armarios provados del profecor Snape para completar tu poción multijugos. INTERCAMBIA UNA DE TUS PROPIEDADES POR CUALQUIERA DE LAS PROPIEDADES DE OTRO JUGADOR. NO PUEDES INTERCAMBIAR PROPIEDADES QUE FORMAN PARTE DE UN GRUPO COMPLETO.",
+          "text_formatted": "[center][i][font_size=10]Conserva esta carta y úsala cuando la necesites.[/font_size][/i]\n\n[font_size=13] Logras sacar a escondidas un poco de la piel de serpiente y polvos de cuerno de bicornio de los armarios provados del profecor Snape para completar tu poción multijugos.[/font_size]\n\n[b][font_size=18] INTERCAMBIA UNA DE TUS PROPIEDADES POR CUALQUIERA DE LAS PROPIEDADES DE OTRO JUGADOR. NO PUEDES INTERCAMBIAR PROPIEDADES QUE FORMAN PARTE DE UN GRUPO COMPLETO.[/font_size][/b][/center]",
+          "keep": true,
+          "effect": {
+            "action": "swap_property",
+            "chooser": "self",
+            "restrict": "no_complete_group"
+          }
+        },
+        {
+          "id": "owl_015",
+          "text": "¡Alohomora! SAL DE LA CÁRCEL GRATIS. Puedes intercambiar o vender esta tarjeta o guardarla hasta que la necesites.",
+          "text_formatted": "[center][i][font_size=13]¡Alohomora![/font_size][/i]\n\n[b][font_size=18] SAL DE LA CÁRCEL GRATIS.[/font_size]\n\n [font_size=13]Puedes intercambiar o vender esta tarjeta o guardarla hasta que la necesites.[/font_size][/b][/center]",
+          "keep": true,
+          "effect": {
+            "action": "get_out_of_jail_free",
+            "tradeable": true
+          }
+        },
+        {
+          "id": "owl_016",
+          "text": "¿OTRO CASTIGO? ¿ENTRASTE A HURTADILLAS A LA SALA COMÚN DE HUFFLEPUFF? ¿EN QUÉ ESTABAS PENSANDO? ENTREGA 10 PUNTOS DE CASA A CADA JUGADOR. Si hay jugadores de Hufflepuff, tienes que entregar 20 puntos de casa a cada uno.",
+          "text_formatted": "[center][font_size=13]¿OTRO CASTIGO? ¿ENTRASTE A HURTADILLAS A LA SALA COMÚN DE HUFFLEPUFF? ¿EN QUÉ ESTABAS PENSANDO?[/font_size]\n\n[b][font_size=18] ENTREGA 10 PUNTOS DE CASA A CADA JUGADOR.[/font_size][/b]\n\n[i][font_size=13] Si hay jugadores de Hufflepuff, tienes que entregar 20 puntos de casa a cada uno.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "pay_points_to_all",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "all_players",
+              "Hufflepuff": {
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_017",
+          "text": "Tu profesor de Defensa Contra las Artes Oscuras ha mandado de tarea un rollo de pergamino sobre los encantamientos escudo. !Ya puedes ponerte a practicar! VE DIRECTAMENTE A LA PRÓXIMA CASILLA DE HECHIZO. SI PASAS POR LA CASILLA DE SALIDA, RECIBIRÁS 20 PUNTOS DE CASA. Si NO SE HA EXPLORADO, puedes comprárselo al banco. Si YA SE HA EXPLORADO, premia al dueño con la renta. Si hay jugadores de Ravenclaw, puedes obligar a alguno a moverse a esa casilla en tu lugar.",
+          "text_formatted": "[center][font_size=13]Tu profesor de Defensa Contra las Artes Oscuras ha mandado de tarea un rollo de pergamino sobre los encantamientos escudo. !Ya puedes ponerte a practicar![/font_size]\n\n[b][font_size=18] VE DIRECTAMENTE A LA PRÓXIMA CASILLA DE HECHIZO. SI PASAS POR LA CASILLA DE SALIDA, RECIBIRÁS 20 PUNTOS DE CASA.[/font_size][/b]\n[font_size=13] Si NO SE HA EXPLORADO, puedes comprárselo al banco. Si YA SE HA EXPLORADO, premia al dueño con la renta.\n[i] Si hay jugadores de Ravenclaw, puedes obligar a alguno a moverse a esa casilla en tu lugar.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "move_to_nearest",
+            "tile_type": "spell",
+            "pass_go_bonus": 20,
+            "landing_override": {
+              "if_owned": "pay_normal_rent",
+              "if_unowned": "can_buy"
+            },
+            "house_modifiers": {
+              "target": "choose_player",
+              "condition": "target_is_house",
+              "house": "Ravenclaw",
+              "substitute_action": "move_to_nearest",
+              "tile_type": "spell",
+              "description": "Puedes obligar a un Ravenclaw a moverse a esa casilla en tu lugar"
+            }
+          }
+        },
+        {
+          "id": "owl_018",
+          "text": "Con la ayuda de una amable estudiante de Hufflepuff escribes un excelente ensayo sobre el Lago Negro para la asignatura de Cuidado de lasCriaturas Magicas. RECIBES 10 PUNTOS DE CASA. Si perteneces a Hufflepuff, recibes 20 puntos de casa.",
+          "text_formatted": "[center][font_size=13] Con la ayuda de una amable estudiante de Hufflepuff escribes un excelente ensayo sobre el Lago Negro para la asignatura de Cuidado de lasCriaturas Magicas.[/font_size]\n\n[b][font_size=18] RECIBES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si perteneces a Hufflepuff, recibes 20 puntos de casa.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "gain_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Hufflepuff": {
+                "action": "gain_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_019",
+          "text": "¿HAS LLEGADO TARDE AL BANQUETE DE INICIO DE CURSO? ¡SEGURAMENTE TE CASTIGARÁN DURANTE UN MES ENTERO! VE A LA CÁRCEL. VE DIRECTAMENTE A LA CÁRCEL. NO PASES POR LA CASILLA DE SALIDA. NO RECIBIRAS 20 PUNTOS DE CASA.",
+          "text_formatted": "[center][font_size=13]¿HAS LLEGADO TARDE AL BANQUETE DE INICIO DE CURSO? ¡SEGURAMENTE TE CASTIGARÁN DURANTE UN MES ENTERO![/font_size]\n\n[b][font_size=18] VE A LA CÁRCEL. VE DIRECTAMENTE A LA CÁRCEL. NO PASES POR LA CASILLA DE SALIDA. NO RECIBIRAS 20 PUNTOS DE CASA.[/font_size][/b][/center]",
+          "keep": false,
+          "effect": {
+            "action": "go_to_jail",
+            "pass_go_bonus": 0
+          }
+        },
+        {
+          "id": "owl_020",
+          "text": "Lanzas perfectamente el hechizo Petrificus Totalus en la clase de Defensa Contra las Artes Oscuras y ¡petrificas a tu compañero de Ravenclaw! RECIBES 10 PUNTOS DE CASA. Si perteneces a Slytherin, recibes 20 puntos de casa",
+          "text_formatted": "[center][font_size=13]Lanzas perfectamente el hechizo [i]Petrificus Totalus[/i] en la clase de Defensa Contra las Artes Oscuras y ¡petrificas a tu compañero de Ravenclaw![/font_size]\n\n[b][font_size=18] RECIBES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si perteneces a Slytherin, recibes 20 puntos de casa.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "gain_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Slytherin": {
+                "action": "gain_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_021",
+          "text": "¡La Mimbulus mimbletonia de Neville Longbottom te explota encima y aún no conoces ningún ancantamiento de limpieza! PIERDES 10 PUNTOS DE CASA. Si perteneces a Hufflepuff, pierdes 20 puntos de casa.",
+          "text_formatted": "[center][font_size=13]¡La Mimbulus mimbletonia de Neville Longbottom te explota encima y aún no conoces ningún ancantamiento de limpieza![/font_size]\n\n[b][font_size=18] PIERDES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si perteneces a Hufflepuff, pierdes 20 puntos de casa.[/font_size][/b][/center]",
+          "keep": false,
+          "effect": {
+            "action": "lose_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Hufflepuff": {
+                "action": "lose_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_022",
+          "text": "Pides al profesor Flitwick un pase a la Sección Prohibida. La clase de encantamientos es tu favorita y te mueres de ganas por aprender las teorías avanzadas. RECIBES 10 PUNTOS DE CASA. Si perteneces a Ravenclaw, recibes 20 puntos de casa.",
+          "text_formatted": "[center][font_size=13]Pides al profesor Flitwick un pase a la Sección Prohibida. La clase de encantamientos es tu favorita y te mueres de ganas por aprender las teorías avanzadas.[/font_size]\n\n[b][font_size=18] RECIBES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si perteneces a Ravenclaw, recibes 20 puntos de casa.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "gain_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Ravenclaw": {
+                "action": "gain_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_023",
+          "text": "¡HAS ENTRADO AL BOSQUE PROHIBIDO EN UNA NOCHE DE LUNA LLENA! EVIDENTEMENTE, ¡NO HAS APRENDIDO NADA EN LA CLASE DE DEFENSA CONTRA LAS ARTES OSCURAS! PIERDES 10 PUNTOS DE CASA. Si eres un jugador de Gryffindor, pierdes 20 puntos de casa.",
+          "text_formatted": "[center][font_size=13]¡HAS ENTRADO AL BOSQUE PROHIBIDO EN UNA NOCHE DE LUNA LLENA! EVIDENTEMENTE, ¡NO HAS APRENDIDO NADA EN LA CLASE DE DEFENSA CONTRA LAS ARTES OSCURAS![/font_size]\n\n[b][font_size=18] PIERDES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si eres un jugador de Gryffindor, pierdes 20 puntos de casa.[/font_size][/i]",
+          "keep": false,
+          "effect": {
+            "action": "lose_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Gryffindor": {
+                "action": "lose_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_024",
+          "text": "Te haces amigo de Nick Casi Decapitado y ¡te comparte secretos que muy pocos conocen sobre el castillo! VE DIRECTO A LA SALIDA. RECIBES 20 PUNTOS DE CASA. Si perteneces a Gryffindor, recibes 40 puntos de casa.",
+          "text_formatted": "[center][font_size=13]Te haces amigo de Nick Casi Decapitado y ¡te comparte secretos que muy pocos conocen sobre el castillo![/font_size]\n\n[b][font_size=18] VE DIRECTO A LA SALIDA. RECIBES 20 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13] Si perteneces a Gryffindor, recibes 40 puntos de casa.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "move_to_tile",
+            "tile_id": 0,
+            "pass_go_bonus": 20,
+            "house_modifiers": {
+              "target": "self",
+              "Gryffindor": {
+                "pass_go_bonus": 40
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_025",
+          "text": "¡Oh, no!¡Llevas tantos libros que tu bolsa revienta y la tinta del tintero se derrama sobre las páginas! ¡Por las barbas de Merlín! Acabas de comprarlos en Flourish y Blotts... PIERDES 10 PUNTOS DE CASA. Si perteneces a Ravenclaw, pierdes 20 puntos de casa.",
+          "text_formatted": "[center][font_size=13]¡Oh, no!¡Llevas tantos libros que tu bolsa revienta y la tinta del tintero se derrama sobre las páginas! ¡Por las barbas de Merlín! Acabas de comprarlos en Flourish y Blotts...[/font_size]\n\n[b][font_size=18]PIERDES 10 PUNTOS DE CASA.[/font_size][/b]\n\n[i][font_size=13]Si perteneces a Ravenclaw, pierdes 20 puntos de casa.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "lose_points",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "self",
+              "Ravenclaw": {
+                "action": "lose_points",
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_026",
+          "text": "Conserva esta carta y úsala cuando la necesites. ¡Tu casa gana la Copa de Quidditch! AÑADE UN ESCUDO A UNA PROPIEDAD EN CUALQUIER GRUPO DE COLOR COMPLETO QUE POSEAS.",
+          "text_formatted": "[center][i][font_size=10]Conserva esta carta y úsala cuando la necesites.[/font_size][/i]\n\n[font_size=13]¡Tu casa gana la Copa de Quidditch![/font_size]\n\n[b][font_size=18]AÑADE UN ESCUDO A UNA PROPIEDAD EN CUALQUIER GRUPO DE COLOR COMPLETO QUE POSEAS.[/font_size][/b]",
+          "keep": true,
+          "effect": {
+            "action": "add_shield",
+            "chooser": "self",
+            "restrict": "complete_group_only"
+          }
+        },
+        {
+          "id": "owl_027",
+          "text": "Recuerda: cuando te desplaces, ¡ve concuidado! ¡Nunca se sabe si hay escaleras con trampas o alguna maldición! MUÉVETE A CUALQUIER CASILLA. SIGUE LAS INSTRUCCIONES DE ESA CASILLA DEL TABLERO.",
+          "text_formatted": "[center][font_size=13]Recuerda: cuando te desplaces, ¡ve concuidado! ¡Nunca se sabe si hay escaleras con trampas o alguna maldición![/font_size]\n\n[b][font_size=18]MUÉVETE A CUALQUIER CASILLA. SIGUE LAS INSTRUCCIONES DE ESA CASILLA DEL TABLERO.[/font_size][/b][/center]",
+          "keep": false,
+          "effect": {
+            "action": "move_to_tile_choice",
+            "chooser": "self",
+            "exclude_types": [
+              "go_to_jail",
+              "jail",
+              "tax"
+            ],
+            "landing_override": {
+              "always": "follow_normal_rules"
+            }
+          }
+        },
+        {
+          "id": "owl_028",
+          "text": "Bloqueas un desagradable maleficio mocomurciélagos de un jugador de Gryffindor en el club de duelo. RECIBES 10 PUNTOS DE CASA DE CADA JUGADOR. Recibes 20 puntos de casa de cada jugador de Gryffindor",
+          "text_formatted": "[center][font_size=13]Bloqueas un desagradable maleficio mocomurciélagos de un jugador de Gryffindor en el club de duelo.[/font_size]\n\n[b][font_size=18]RECIBES 10 PUNTOS DE CASA DE CADA JUGADOR[/font_size][/b]\n\n[font_size=13][i]Recibes 20 puntos de casa de cada jugador de Gryffindor[/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "collect_points_from_all",
+            "amount": 10,
+            "house_modifiers": {
+              "target": "all_players",
+              "Gryffindor": {
+                "amount": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "owl_029",
+          "text": "Sin que nadie se entere, lanzas una bengala del doctor Filibuster contra una fuente como distracción. Acto seguido ¡huyes a toda velocidad para evitar que te castiguen! SAL DE LA CÁRCEL GRATIS. Puedes intercambiar o vender esta tarjeta o guardarla hasta que la necesites.",
+          "text_formatted": "[center][font_size=13]Sin que nadie se entere, lanzas una bengala del doctor Filibuster contra una fuente como distracción. Acto seguido ¡huyes a toda velocidad para evitar que te castiguen![/font_size]\n\n[b][font_size=18]SAL DE LA CÁRCEL GRATIS.[/font_size]\n\n[font_size=15]Puedes intercambiar o vender esta tarjeta o guardarla hasta que la necesites.[/font_size][/i][/b][/center]",
+          "keep": true,
+          "effect": {
+            "action": "get_out_of_jail_free",
+            "tradeable": true
+          }
+        },
+        {
+          "id": "owl_030",
+          "text": "TE HAN CASTIGADO POR TIRAR BOMBAS FÉTIDAS EN EL AULA. ¡NO VUELVAS A PASARTE DE LA RAYA!. VE A LA CÁRCEL. VE DIRECTAMENTE A LA CÁRCEL. NO PASES POR LA CASILLA DE SALIDA. NO RECIBIRAS 20 PUNTOS DE CASA.Si hay jugadores de Slytherin, puedes obligar a alguno a moverse a esa casilla en tu lugar.",
+          "text_formatted": "[center][font_size=13]TE HAN CASTIGADO POR TIRAR BOMBAS FÉTIDAS EN EL AULA. ¡NO VUELVAS A PASARTE DE LA RAYA![/font_size]\n\n[b][font_size=18]VE A LA CÁRCEL. VE DIRECTAMENTE A LA CÁRCEL. NO PASES POR LA CASILLA DE SALIDA. NO RECIBIRAS 20 PUNTOS DE CASA[/font_size][/b]\n\n[font_size=10][i]Si hay jugadores de Slytherin, puedes obligar a alguno a moverse a esa casilla en tu lugar.[/font_size][/i][/center]",
+          "keep": false,
+          "effect": {
+            "action": "go_to_jail",
+            "pass_go_bonus": 0,
+            "house_modifiers": {
+              "target": "choose_player",
+              "condition": "target_is_house",
+              "house": "Slytherin",
+              "substitute_action": "go_to_jail",
+              "description": "Puedes obligar a un Slytherin a ir a la cárcel en tu lugar"
+            }
+          }
+        },
+        {
+          "id": "owl_031",
+          "text": "¡Accio! RÓBALE UNA PROPIEDAD A CUALQUIER JUGADOR. NO PUEDES ROBAR GRUPOS COMPLETOS.",
+          "text_formatted": "[center][i][font_size=10]Conserva esta carta y úsala cuando la necesites[/font_size]\n\n[font_size=13]¡Accio![/font_size][/i]\n\n[b][font_size=18]RÓBALE UNA PROPIEDAD A CUALQUIER JUGADOR. NO PUEDES ROBAR GRUPOS COMPLETOS.[/font_size][/b][/center]",
+          "keep": true,
+          "effect": {
+            "action": "steal_property",
+            "chooser": "self",
+            "restrict": "no_complete_group"
+          }
+        },
+        {
+          "id": "owl_032",
+          "text": "Hay una ventisca allá afuera. ¡Quizás puedas echar una pelea de bolas de nieve mágicas después de las clases! CANCELA UNA TARJETA DE LECHUZAS MENSAJERAS QUE TE PUEDE AFECTAR.",
+          "text_formatted": "[center][i][font_size=10]Conserva esta carta y úsala cuando la necesites[/font_size][/i]\n\n[font_size=13]Hay una ventisca allá afuera. ¡Quizás puedas echar una pelea de bolas de nieve mágicas después de las clases![/font_size]\n\n[b][font_size=18]CANCELA UNA TARJETA DE LECHUZAS MENSAJERAS QUE TE PUEDE AFECTAR.[/font_size][/b][/center]",
+          "keep": true,
+          "effect": {
+            "action": "cancel_owl_card",
+            "chooser": "self",
+            "timing": "reactive",
+            "description": "Se usa como respuesta a una carta que te afecte negativamente"
+          }
+        }
+      ]
+    }
+  }
+} 
