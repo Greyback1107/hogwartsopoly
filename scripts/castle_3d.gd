@@ -27,8 +27,6 @@ func _ensure_castle_present() -> void:
     if existing != null:
         existing.scale = Vector3.ONE * CASTLE_SCALE
         _center_and_ground_model(existing)
-        existing.position = Vector3.ZERO
-
         _apply_castle_tint(existing)
         return
 

@@ -38,10 +38,10 @@ func _ready() -> void:
     if GameState.players.is_empty():
         GameState.players = [
             {"name": "Harry",    "house": "Gryffindor", "token": "locomotora",
-             "points": 100, "position": 0, "in_jail": false,
+             "points": 50, "position": 0, "in_jail": false,
              "jail_turns": 0, "properties": [], "hand_cards": []},
             {"name": "Hermione", "house": "Ravenclaw", "token": "hipogrifo",
-             "points": 100, "position": 0, "in_jail": false,
+             "points": 50, "position": 0, "in_jail": false,
              "jail_turns": 0, "properties": [], "hand_cards": []},
         ]
     _build_board_base()

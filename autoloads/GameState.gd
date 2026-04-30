@@ -53,7 +53,7 @@ func reset_game() -> void:
     turn_count = 0
     for player in players:
         player.position    = 0
-        player.points      = 0
+        player.points      = 50
         player.in_jail     = false
         player.jail_turns  = 0
         player.properties  = []
