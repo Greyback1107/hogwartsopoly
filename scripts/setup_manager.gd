@@ -50,7 +50,7 @@ func confirm_player(player_name: String, house: String, token_id: String) -> voi
         "name":       player_name.strip_edges(),
         "house":      house,
         "token":      token_id,
-        "points":     0,
+        "points":     50,
         "position":   0,
         "in_jail":    false,
         "jail_turns": 0,

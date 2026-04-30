@@ -2,31 +2,95 @@
 extends Node3D
 
 const CASTLE_PATH:  String = "res://assets/models/castle/hogwarts.glb"
-const CASTLE_SCALE: float  = 1.4
-const ROT_SPEED:    float  = 2.5    # grados/segundo
-const BOB_AMP:      float  = 0.03
-const BOB_SPEED:    float  = 0.6
+const CASTLE_SCALE: float  = 4.8
+const ROT_SPEED:    float  = 0.0
+const BOB_AMP:      float  = 0.0
+const BOB_SPEED:    float  = 0.0
+const CASTLE_TINT:  Color  = Color("#D8D8D8")
+const CASTLE_CENTER_OFFSET: Vector3 = Vector3(-0.9, 0.0, 0.0)
 
 var _time: float = 0.0
 var _base_y: float = 0.0
 
 func _ready() -> void:
     print("CastleRoot position: ", global_position)
-    _load_castle()
+    _ensure_castle_present()
     _init_base_y.call_deferred()
     
 func _init_base_y() -> void:
     _base_y = position.y
     print("Castle _base_y fijado en: ", _base_y)
 
-func _load_castle() -> void:
+func _ensure_castle_present() -> void:
+    # Si el modelo ya viene instanciado desde la escena, reutilizarlo
+    var existing = _find_existing_castle_model()
+    if existing != null:
+        existing.scale = Vector3.ONE * CASTLE_SCALE
+        _center_and_ground_model(existing)
+        _apply_castle_tint(existing)
+        return
+
     if ResourceLoader.exists(CASTLE_PATH):
         var inst = load(CASTLE_PATH).instantiate()
         inst.scale = Vector3.ONE * CASTLE_SCALE
+        _center_and_ground_model(inst)
+        _apply_castle_tint(inst)
         # Preservar materiales originales del GLB — NO aplicar override
         add_child(inst)
     else:
         _build_fallback()
+
+func _find_existing_castle_model() -> Node3D:
+    for child in get_children():
+        if child is Node3D and child.scene_file_path.ends_with("hogwarts.glb"):
+            return child
+    return null
+
+func _center_and_ground_model(model_root: Node3D) -> void:
+    var aabb := _compute_aabb_recursive(model_root)
+    if aabb.size == Vector3.ZERO:
+        model_root.position = Vector3.ZERO
+        return
+    var center_xz = Vector3(aabb.position.x + aabb.size.x * 0.5, 0.0, aabb.position.z + aabb.size.z * 0.5)
+    var base_y = aabb.position.y
+    model_root.position = Vector3(-center_xz.x, -base_y, -center_xz.z) + CASTLE_CENTER_OFFSET
+
+func _compute_aabb_recursive(root: Node3D) -> AABB:
+    var first := true
+    var out := AABB()
+    var stack: Array = [[root, Transform3D.IDENTITY]]
+    while not stack.is_empty():
+        var item = stack.pop_back()
+        var n: Node3D = item[0]
+        var parent_xform: Transform3D = item[1]
+        var local_xform = parent_xform * n.transform
+        if n is MeshInstance3D:
+            var mi := n as MeshInstance3D
+            if mi.mesh:
+                var local_aabb = mi.mesh.get_aabb()
+                var global_aabb = local_xform * local_aabb
+                if first:
+                    out = global_aabb
+                    first = false
+                else:
+                    out = out.merge(global_aabb)
+        for c in n.get_children():
+            if c is Node3D:
+                stack.append([c, local_xform])
+    return out
+
+func _apply_castle_tint(node: Node) -> void:
+    if node is MeshInstance3D:
+        node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+        var mat = StandardMaterial3D.new()
+        mat.albedo_color = CASTLE_TINT
+        mat.metallic = 0.15
+        mat.roughness = 0.55
+        mat.emission_enabled = true
+        mat.emission = Color("#FFFFFF") * 0.03
+        node.material_override = mat
+    for child in node.get_children():
+        _apply_castle_tint(child)
 
 func _build_fallback() -> void:
     _tower(Vector3(0, 0, 0),    0.30, 1.4)
